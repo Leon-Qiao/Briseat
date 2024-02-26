@@ -23,12 +23,9 @@ $('#submitBtn').on('click', function(event) {
         dataType: 'json',
         traditional: true,
         success: function(response, textStatus, jqXHR) {
-            console.log('yesyes')
             if ('redirect_url' in response && response.redirect_url) {
-                console.log('302')
                 window.location.href = response.redirect_url;
             } else {
-                console.log('no 302')
                 console.log('Data submitted successfully:', response);
                 window.location.href = response.redirect_url;
             }

@@ -20,7 +20,7 @@
 							<p>{{ ingredients }}</p>
 							<ul class="actions">
 								<li><a href="{% url 'sugg' %}" class="button big wide smooth-scroll-middle">Change One</a></li>
-								<li><a href="#first" class="button big wide smooth-scroll-middle">Take A Photo</a></li>
+								<li><a href="#" id="photoLink" class="button big wide smooth-scroll-middle">Take A Photo</a><input type="file" id="photoFile" style="display: none"></li>
 							</ul>
 							<ul class="actions">
 								<li><a href="#first" class="button big wide smooth-scroll-middle">Recipe</a></li>
@@ -55,6 +55,11 @@
 			<script src="/static/assets2/js/breakpoints.min.js"></script>
 			<script src="/static/assets2/js/util.js"></script>
 			<script src="/static/assets2/js/main.js"></script>
-
+			<script src="/static/assets2/js/backend.js"></script>
+			<script>
+				var imgUrl = "{% url 'img' %}";
+				var csrftoken = "{{ csrf_token }}";
+			</script>
+			
 	</body>
 </html>

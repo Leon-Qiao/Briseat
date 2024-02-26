@@ -7,4 +7,5 @@ urlpatterns = [
     path("form/", views.form, name="form"),
     path("log/", views.log, name="log"),
     path("sugg/", views.sugg, name="sugg"),
+    path("img/", views.img, name="img"),
 ]

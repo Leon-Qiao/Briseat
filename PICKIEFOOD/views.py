@@ -7,6 +7,7 @@ from django.urls import reverse
 
 
 from openai import OpenAI
+import openai
 
 from datetime import datetime
 import json
@@ -31,7 +32,7 @@ def log(request):
     infos.name = request.POST['demo-name']
     infos.dob = request.POST['demo-date']
     infos.nation = request.POST['demo-nation']
-    infos.gender = request.POST['demo-gender']
+    infos.gender = request.POST.get('demo-gender')
     infos.religon = request.POST['demo-religon']
     infos.dietary = request.POST['demo-pref']
     infos.height = request.POST['demo-height']
@@ -86,20 +87,21 @@ def sugg(request):
     if infos.aim!= "":
         Prompt += f" I want to {infos.aim}."
 
-    Prompt += f"Please recommend me {meal}. Please return it in the json format of {{dishName:'', duration:'', ingredients: '', recipe: ''}}."
+    Prompt += f"Please recommend me {meal}. Please return it in the json format of {{dishName:'', duration:'', ingredients: '', recipe: ''}} without any other content."
 
     print(Prompt)
 
-    # with open('C:/api.txt') as f:
-    #         AK=f.read()
-    AK = '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'
+    with open('C:/api.txt') as f:
+            AK=f.read()
+    # AK = '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'
 
     client = OpenAI(
         api_key = AK
     )
 
     completion = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4-turbo-preview",
+        # model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are a dietary assistant who specializes in helping create healthy eating plans."},
             {"role": "user", "content": Prompt}
@@ -109,6 +111,8 @@ def sugg(request):
     feedback = completion.choices[0].message.content
     print(feedback)
     feedback = feedback.replace('\n', '')
+    feedback = feedback[feedback.find('{'): feedback.rfind('}') + 1]
+    print(feedback)
     context = json.loads(feedback)
     print(context)
 
@@ -126,8 +130,13 @@ def sugg(request):
 
     return render(request, 'PICKIEFOOD/food.html', context)
 
+def img(request):
+    image_data = request.FILES.get('image')
 
+    response = openai.Vision.preview(image_data=image_data)
 
+    print(response.predictions.keys())
 
-
-
+    response_data = {'success': True, 'message': '数据已成功保存', 'redirect_url': reverse('sugg')}
+        
+    return JsonResponse(response_data)
