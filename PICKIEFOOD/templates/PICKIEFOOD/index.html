@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<!--
+	Ethereal by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Ethereal by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/static/assets1/css/main.css" />
+		<noscript><link rel="stylesheet" href="/static/assets1/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Wrapper -->
+					<div id="wrapper">
+
+						<!-- Panel (Banner) -->
+							<section class="panel banner right">
+								<div class="content color0 span-3-75">
+									<h1 class="major">Hello, my name<br />
+									is Ethereal</h1>
+									<p>This is <strong>Ethereal</strong>, a free site template by AJ for <a href="https://html5up.net">HTML5 UP</a>. It’s fully responsive, built on HTML5 and CSS3, and released entirely for free under the Creative Commons license. Hope you dig it :)</p>
+									<ul class="actions">
+										<li><a href="#first" class="button primary color1 circle icon solid fa-angle-right">Next</a></li>
+									</ul>
+								</div>
+								<div class="image filtered span-1-75" data-position="25% 25%">
+									<img src="/static/images1/pic01.jpg" alt="" />
+								</div>
+							</section>
+
+						<!-- Panel -->
+							<section class="panel color2-alt">
+								<div class="intro color2">
+									<h2 class="major">Elements</h2>
+									<p>Sed vel nibh libero. Mauris et lorem pharetra massa lorem turpis congue pulvinar. Vivamus sed feugiat finibus. Duis amet bibendum amet sed. Duis mauris ex, dapibus sed ligula tempus volutpat magna etiam. </p>
+								</div>
+
+								<div class="inner columns aligned" id="first">
+									<!-- <form method="post" action="#"> -->
+										<div class="span-4-5">
+											<h3 class="major">Basic Information</h3>
+											<form id="form1" method="post" action="{% url 'log' %}">
+											{% csrf_token %}
+											<div class="fields">
+												<div class="field third">
+													<label for="demo-name">Name</label>
+													<input type="text" name="demo-name" id="demo-name" value="" placeholder="Jane Doe" />
+												</div>
+												<div class="field third">
+													<label for="demo-date">Date of birth</label>
+													<input type="date" name="demo-date" id="demo-date" value="" />
+												</div>
+												<div class="field third">
+													<label for="demo-nation">Nation</label>
+													<div class="select-wrapper">
+														<select name="demo-nation" id="demo-nation">
+															<option value="">-</option>
+															<option value="1">United Kingdom</option>
+															<option value="1">China</option>
+															<option value="1">France</option>
+															<option value="1">Italy</option>
+														</select>
+													</div>
+												</div>
+												<div class="field third">
+													<label for="demo-gender">Gender</label>
+													<input type="radio" id="demo-male" name="demo-gender" class="color2" checked />
+													<label for="demo-male">Male</label>
+													<input type="radio" id="demo-female" name="demo-gender" class="color2" />
+													<label for="demo-female">Female</label>
+												</div>
+												<div class="field third">
+													<label for="demo-religon">Religon</label>
+													<div class="select-wrapper">
+														<select name="demo-religon" id="demo-religon">
+															<option value="">-</option>
+															<option value="1">United Kingdom</option>
+															<option value="1">China</option>
+															<option value="1">France</option>
+															<option value="1">Italy</option>
+														</select>
+													</div>
+												</div>
+												<div class="field third">
+													<label for="demo-pref">Dietary Preferences</label>
+													<div class="select-wrapper">
+														<select name="demo-pref" id="demo-pref">
+															<option value="">-</option>
+															<option value="1">United Kingdom</option>
+															<option value="1">China</option>
+															<option value="1">France</option>
+															<option value="1">Italy</option>
+														</select>
+													</div>
+												</div>
+												<div class="field third">
+													<label for="demo-height">Height (cm)</label>
+													<input type="text" name="demo-height" id="demo-height" value="" placeholder="182" />
+												</div>
+												<div class="field third">
+													<label for="demo-weight">Weight (kg)</label>
+													<input type="text" name="demo-weight" id="demo-weight" value="" placeholder="75" />
+												</div>
+											</div>
+											</form>
+										</div>
+										<div class="span-4-5">
+											<h3 class="major">Health Condition</h3>
+											<form id="form2" method="post" action="{% url 'log' %}">
+											{% csrf_token %}
+											<div class="fields">
+												<div class="field">
+													<label for="demo-ill">Illnese</label>
+													<input type="checkbox" id="demo-diab" name="demo-ill" value="demo-diab" class="color2" />
+													<label for="demo-diab">Diabetes</label>
+													<input type="checkbox" id="demo-hype" name="demo-ill" value="demo-hype" class="color2" />
+													<label for="demo-hype">Hypertension</label>
+													<input type="checkbox" id="demo-hear" name="demo-ill" value="demo-hear" class="color2" />
+													<label for="demo-hear">Heart disease</label>
+													<input type="checkbox" id="demo-gast" name="demo-ill" value="demo-gast" class="color2" />
+													<label for="demo-gast">Gastroenteritis</label>
+												</div>
+												<div class="field">
+													<label for="demo-ill">Allergen</label>
+													<input type="checkbox" id="demo-milk" name="demo-all" value="demo-milk" class="color2" />
+													<label for="demo-milk">Milk</label>
+													<input type="checkbox" id="demo-egg" name="demo-all" value="demo-egg" class="color2" />
+													<label for="demo-egg">Egg</label>
+													<input type="checkbox" id="demo-hear" name="demo-all" value="demo-fish" class="color2" />
+													<label for="demo-fish">Fish</label>
+													<input type="checkbox" id="demo-crus" name="demo-all" value="demo-crus" class="color2" />
+													<label for="demo-crus">Crustaceans</label>
+												</div>
+												<div class="field">
+													<input type="checkbox" id="demo-pean" name="demo-all" value="demo-pean" class="color2" />
+													<label for="demo-pean">Peanuts</label>
+													<input type="checkbox" id="demo-nuts" name="demo-all" value="demo-nuts" class="color2" />
+													<label for="demo-nuts">Nuts</label>
+													<input type="checkbox" id="demo-whea" name="demo-all" value="demo-whea" class="color2" />
+													<label for="demo-whea">Wheat</label>
+													<input type="checkbox" id="demo-glut" name="demo-all" value="demo-glut" class="color2" />
+													<label for="demo-glut">Gluten</label>
+												</div>
+											</div>
+										</form>
+										<ul class="actions">
+											<li><input type="submit" id="submitBtn" value="Submit" class="primary color2" /></li>
+											<li><input type="reset" id="resetBtn" value="Reset" /></li>
+										</ul>
+									</div>
+									<!-- </form> -->
+								</div>
+							</section>
+
+						<!-- Copyright -->
+							<!-- <div class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</div> -->
+
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="/static/assets1/js/jquery.min.js"></script>
+			<script src="/static/assets1/js/browser.min.js"></script>
+			<script src="/static/assets1/js/breakpoints.min.js"></script>
+			<script src="/static/assets1/js/main.js"></script>
+			<script src="/static/assets1/js/backend.js"></script>
+			<script src="/static/assets1/js/jquery.cookie.js"></script>
+			<script>
+				var logUrl = "{% url 'log' %}";
+			</script>
+	</body>
+</html>
