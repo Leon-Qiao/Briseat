@@ -10,6 +10,7 @@ from openai import OpenAI
 import openai
 
 from datetime import datetime
+import requests
 import json
 
 def index(request):
@@ -128,6 +129,27 @@ def sugg(request):
     # )
 
     # print(completion.choices[0].message)
+
+    UNSPLASH_ACCESS_KEY = 'AhhKZrgAd7tzlOOBGNP7W8gyHiRAgOZntXYojIBlEPk'
+    search_query = context['dishName']
+    base_url = "https://api.unsplash.com"
+    search_endpoint = "/search/photos"
+    params = {
+        'query': search_query,
+        'per_page': 10,  # 设置每页返回的结果数量
+    }
+    headers = {'Authorization': f'Client-ID {UNSPLASH_ACCESS_KEY}'}
+    response = requests.get(base_url + search_endpoint, params=params, headers=headers)
+    if response.status_code == 200:
+        data = json.loads(response.text)
+        first_photo = data['results'][0]
+        print(f"Photo by {first_photo['user']['name']}:")
+        print(f"图片链接: {first_photo['links']['html']}")
+        print(f"下载链接: {first_photo['links']['download']}")
+    else:
+        print("请求失败，状态码:", response.status_code)
+
+    context['imgSrc'] = first_photo['links']['download']
 
     return render(request, 'PICKIEFOOD/food.html', context)
 
