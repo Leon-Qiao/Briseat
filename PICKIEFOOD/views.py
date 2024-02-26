@@ -157,9 +157,9 @@ def img(request):
     image_data = request.FILES.get('image')
     print(image_data)
 
-    response = openai.Vision.preview(image_data=image_data)
+    # response = openai.Vision.preview(image_data=image_data)
 
-    print(response.predictions.keys())
+    # print(response.predictions.keys())
 
     response_data = {'success': True, 'message': '数据已成功保存', 'redirect_url': reverse('sugg')}
         
