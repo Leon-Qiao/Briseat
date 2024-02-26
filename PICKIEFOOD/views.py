@@ -7,7 +7,7 @@ from django.urls import reverse
 
 
 from openai import OpenAI
-
+import json
 
 def index(request):
     if Infos.objects.count() != 0:
@@ -78,8 +78,11 @@ def sugg(request):
 
     print(Prompt)
 
+    with open('C:/api.txt') as f:
+            AK=f.read()
+
     client = OpenAI(
-        api_key='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'
+        api_key = AK
     )
 
     completion = client.chat.completions.create(
@@ -90,9 +93,26 @@ def sugg(request):
         ]
     )
 
+    feedback = completion.choices[0].message.content
+    print(feedback)
+    feedback = feedback.replace('\n', '')
+    context = json.loads(feedback)
+    context['ingredients'] = ", ".join(context['ingredients'])
+    print(context)
+
+    picPrompt = f"Give me a picture of {context['dishName']}."
+
+    completion = client.chat.completions.create(
+        model="dall-e-3",
+        messages=[
+            {"role": "system", "content": "You are a dietary assistant who specializes in helping create healthy eating plans."},
+            {"role": "user", "content": picPrompt}
+        ]
+    )
+
     print(completion.choices[0].message)
 
-    return render(request, 'PICKIEFOOD/food.html')
+    return render(request, 'PICKIEFOOD/food.html', context)
 
 
 
