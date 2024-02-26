@@ -91,9 +91,9 @@ def sugg(request):
 
     print(Prompt)
 
-    with open('C:/api.txt') as f:
-            AK=f.read()
-    # AK = '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'
+    # with open('C:/api.txt') as f:
+    #         AK=f.read()
+    AK = ''
 
     client = OpenAI(
         api_key = AK
@@ -117,9 +117,10 @@ def sugg(request):
     print(context)
 
     # picPrompt = f"Give me a picture of {context['dishName']}."
+    # picPrompt = f"I need a 3-step recipe to teach me how to cook it. Please show me the tutorial with only 3 separate pictures in the format of jpg without any other content. You don't need to summarize your results"
 
     # completion = client.chat.completions.create(
-    #     model="dall-e-3",
+    #     model="gpt-4-turbo-preview",
     #     messages=[
     #         {"role": "system", "content": "You are a dietary assistant who specializes in helping create healthy eating plans."},
     #         {"role": "user", "content": picPrompt}
@@ -132,6 +133,7 @@ def sugg(request):
 
 def img(request):
     image_data = request.FILES.get('image')
+    print(image_data)
 
     response = openai.Vision.preview(image_data=image_data)
 
