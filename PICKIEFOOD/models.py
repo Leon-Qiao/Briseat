@@ -14,3 +14,4 @@ class Infos(models.Model):
     weight = models.CharField(max_length=200)
     illness = models.CharField(max_length=200)
     allergen = models.CharField(max_length=200)
+    aim = models.CharField(max_length=200, default='')

@@ -7,6 +7,8 @@ from django.urls import reverse
 
 
 from openai import OpenAI
+
+from datetime import datetime
 import json
 
 def index(request):
@@ -34,6 +36,7 @@ def log(request):
     infos.dietary = request.POST['demo-pref']
     infos.height = request.POST['demo-height']
     infos.weight = request.POST['demo-weight']
+    infos.aim = request.POST['demo-aim']
     infos.illness = ",".join(request.POST.getlist('demo-ill'))
     infos.allergen = ",".join(request.POST.getlist('demo-all'))
 
@@ -47,6 +50,16 @@ def log(request):
 def sugg(request):
 
     meal = 'breakfast'
+    
+    hour = datetime.now().hour
+
+    if hour < 8:  # 早饭时间
+        meal="breakfast"
+    elif hour < 14:  # 午饭时间
+        meal="lunch"
+    elif hour < 24:  # 晚饭时间
+        meal="dinner"
+
 
     Prompt  = "I am"
     infos = get_object_or_404(Infos, pk=1)
@@ -69,17 +82,17 @@ def sugg(request):
     if infos.illness != "":
         Prompt += f" I have {infos.illness},"
     if infos.allergen != "":
-        Prompt += f" I am allergy to {infos.allergen}."
+         Prompt += f" I am allergy to {infos.allergen}."
+    if infos.aim!= "":
+        Prompt += f" I want to {infos.aim}."
 
-    # if infos.aims != "":
-    #     Prompt += f" I want to {infos.aims}."
-
-    Prompt += f"Please recommend me {meal}. Please return it in the json format of {{dishName:'', duration:'', ingredients: []}}."
+    Prompt += f"Please recommend me {meal}. Please return it in the json format of {{dishName:'', duration:'', ingredients: '', recipe: ''}}."
 
     print(Prompt)
 
-    with open('C:/api.txt') as f:
-            AK=f.read()
+    # with open('C:/api.txt') as f:
+    #         AK=f.read()
+    AK = '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'
 
     client = OpenAI(
         api_key = AK
@@ -97,20 +110,19 @@ def sugg(request):
     print(feedback)
     feedback = feedback.replace('\n', '')
     context = json.loads(feedback)
-    context['ingredients'] = ", ".join(context['ingredients'])
     print(context)
 
-    picPrompt = f"Give me a picture of {context['dishName']}."
+    # picPrompt = f"Give me a picture of {context['dishName']}."
 
-    completion = client.chat.completions.create(
-        model="dall-e-3",
-        messages=[
-            {"role": "system", "content": "You are a dietary assistant who specializes in helping create healthy eating plans."},
-            {"role": "user", "content": picPrompt}
-        ]
-    )
+    # completion = client.chat.completions.create(
+    #     model="dall-e-3",
+    #     messages=[
+    #         {"role": "system", "content": "You are a dietary assistant who specializes in helping create healthy eating plans."},
+    #         {"role": "user", "content": picPrompt}
+    #     ]
+    # )
 
-    print(completion.choices[0].message)
+    # print(completion.choices[0].message)
 
     return render(request, 'PICKIEFOOD/food.html', context)
 

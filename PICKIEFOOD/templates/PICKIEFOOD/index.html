@@ -1,12 +1,7 @@
 <!DOCTYPE HTML>
-<!--
-	Ethereal by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
-		<title>Ethereal by HTML5 UP</title>
+		<title>AI food recommendations</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="/static/assets1/css/main.css" />
@@ -81,10 +76,16 @@
 													<div class="select-wrapper">
 														<select name="demo-religon" id="demo-religon">
 															<option value="">-</option>
-															<option value="Catholicism">United Kingdom</option>
-															<option value="Orthodoxy">China</option>
-															<option value="1">France</option>
-															<option value="1">Italy</option>
+															<option value="Catholicism">Catholicism</option>
+															<option value="Orthodoxy">Orthodoxy</option>
+															<option value="Protestantism">Protestantism</option>
+															<option value="Islam">Islam</option>
+															<option value="Buddhism">Buddhism</option>
+															<option value="Taoism">Taoism</option>
+															<option value="Hinduism">Hinduism</option>
+															<option value="Judaism">Judaism</option>
+															<option value="Sikhism">Sikhism</option>
+															<option value="Atheism">Atheism</option>
 														</select>
 													</div>
 												</div>
@@ -93,10 +94,9 @@
 													<div class="select-wrapper">
 														<select name="demo-pref" id="demo-pref">
 															<option value="">-</option>
-															<option value="1">United Kingdom</option>
-															<option value="1">China</option>
-															<option value="1">France</option>
-															<option value="1">Italy</option>
+															<option value="Vegetarian">Vegetarian</option>
+															<option value="Vegan">Vegan</option>
+															<option value="Omnivore">Omnivore</option>
 														</select>
 													</div>
 												</div>
@@ -118,35 +118,46 @@
 											<div class="fields">
 												<div class="field">
 													<label for="demo-ill">Illnese</label>
-													<input type="checkbox" id="demo-diab" name="demo-ill" value="demo-diab" class="color2" />
+													<input type="checkbox" id="demo-diab" name="demo-ill" value="Diabetes" class="color2" />
 													<label for="demo-diab">Diabetes</label>
-													<input type="checkbox" id="demo-hype" name="demo-ill" value="demo-hype" class="color2" />
+													<input type="checkbox" id="demo-hype" name="demo-ill" value="Hypertension" class="color2" />
 													<label for="demo-hype">Hypertension</label>
-													<input type="checkbox" id="demo-hear" name="demo-ill" value="demo-hear" class="color2" />
+													<input type="checkbox" id="demo-hear" name="demo-ill" value="Heart disease" class="color2" />
 													<label for="demo-hear">Heart disease</label>
-													<input type="checkbox" id="demo-gast" name="demo-ill" value="demo-gast" class="color2" />
+													<input type="checkbox" id="demo-gast" name="demo-ill" value="Gastroenteritis" class="color2" />
 													<label for="demo-gast">Gastroenteritis</label>
 												</div>
 												<div class="field">
 													<label for="demo-ill">Allergen</label>
-													<input type="checkbox" id="demo-milk" name="demo-all" value="demo-milk" class="color2" />
+													<input type="checkbox" id="demo-milk" name="demo-all" value="Milk" class="color2" />
 													<label for="demo-milk">Milk</label>
-													<input type="checkbox" id="demo-egg" name="demo-all" value="demo-egg" class="color2" />
+													<input type="checkbox" id="demo-egg" name="demo-all" value="Egg" class="color2" />
 													<label for="demo-egg">Egg</label>
-													<input type="checkbox" id="demo-hear" name="demo-all" value="demo-fish" class="color2" />
+													<input type="checkbox" id="demo-hear" name="demo-all" value="Fish" class="color2" />
 													<label for="demo-fish">Fish</label>
-													<input type="checkbox" id="demo-crus" name="demo-all" value="demo-crus" class="color2" />
+													<input type="checkbox" id="demo-crus" name="demo-all" value="Crustaceans" class="color2" />
 													<label for="demo-crus">Crustaceans</label>
 												</div>
 												<div class="field">
-													<input type="checkbox" id="demo-pean" name="demo-all" value="demo-pean" class="color2" />
+													<input type="checkbox" id="demo-pean" name="demo-all" value="Peanuts" class="color2" />
 													<label for="demo-pean">Peanuts</label>
-													<input type="checkbox" id="demo-nuts" name="demo-all" value="demo-nuts" class="color2" />
+													<input type="checkbox" id="demo-nuts" name="demo-all" value="Nuts" class="color2" />
 													<label for="demo-nuts">Nuts</label>
-													<input type="checkbox" id="demo-whea" name="demo-all" value="demo-whea" class="color2" />
+													<input type="checkbox" id="demo-whea" name="demo-all" value="Wheat" class="color2" />
 													<label for="demo-whea">Wheat</label>
-													<input type="checkbox" id="demo-glut" name="demo-all" value="demo-glut" class="color2" />
+													<input type="checkbox" id="demo-glut" name="demo-all" value="Gluten" class="color2" />
 													<label for="demo-glut">Gluten</label>
+												</div>
+												<div class="field half">
+													<label for="demo-aim">Aim to</label>
+													<div class="select-wrapper">
+														<select name="demo-aim" id="demo-aim">
+															<option value="">-</option>
+															<option value="lose weight">lose weight</option>
+															<option value="gain weight">gain weight</option>
+															<option value="stay healthy">stay healthy</option>
+														</select>
+													</div>
 												</div>
 											</div>
 										</form>
